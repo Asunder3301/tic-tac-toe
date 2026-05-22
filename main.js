@@ -1,5 +1,5 @@
 const board = (() => {
-    const gameboard = ["", "", "", "", "", "", "", "", ""];
+    const gameboard = ["O", "X", "O", "O", "X", "X", "O", "O", "X"];
 
     const getGameboard = () => gameboard;
 
@@ -82,4 +82,17 @@ const gameController = (() => {
     }
     
     return { startGame, playTurn };
+})();
+
+const handleDOM = (() => {
+    const displayBoard = () => {
+        const cells = document.querySelectorAll(".cell");
+        const currentBoard = board.getGameboard();
+
+        cells.forEach((cell, index) => {
+            cell.textContent = currentBoard[index];
+        });
+    }
+
+    return { displayBoard }
 })();
