@@ -29,3 +29,22 @@ function createPlayer(name, marker) {
 
     return {name, marker, getScore, increaseScore};
 }
+
+const gameController = (() => {
+    let players = [];
+    let activePlayerIndex = 0;
+    let gameOver = false;
+
+    const startGame = (player1, player2) => {
+        players = [
+            createPlayer(player1, "X"),
+            createPlayer(player2, "O")
+        ];
+
+        activePlayerIndex = 0;
+        gameOver = false;
+        board.resetBoard();
+    }
+
+    return { startGame };
+})();
