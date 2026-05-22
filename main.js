@@ -22,14 +22,10 @@ const board = (() => {
     return { getGameboard, makeMove, resetBoard };
 })();
 
-const game = ((player1, player2) => {
-    
-})();
-
-function createPlayer(name) {
+function createPlayer(name, marker) {
     let score = 0;
     const getScore = () => score;
     const increaseScore = () => { score++ }
 
-    return {name, getScore, increaseScore};
+    return {name, marker, getScore, increaseScore};
 }
