@@ -67,5 +67,26 @@ const gameController = (() => {
         return board.getGameboard().every(cell => cell !== "");
     }
 
-    return { startGame, getActivePlayer };
+    const playTurn = (index) => {
+        if(gameOver) { return "Game Over!" }
+
+        const successfulMove = board.makeMove(index, getActivePlayer().marker);
+        if(!successfulMove) { return "Invalid move!" }
+
+        if (checkWin()) {
+            gameOver = true;
+            getActivePlayer().increaseScore();
+            return `${getActivePlayer().name} wins!`;
+        }
+
+        if (checkTie()) {
+            gameOver = true;
+            return "It is a tie!";
+        }
+
+        switchTurns();
+        return `${getActivePlayer().name}'s turn.`;
+    }
+
+    return { startGame, getActivePlayer, playTurn };
 })();
