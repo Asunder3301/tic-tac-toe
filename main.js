@@ -48,5 +48,7 @@ const gameController = (() => {
 
     const getActivePlayer = () => players[activePlayerIndex];
 
-    return { startGame, getActivePlayer };
+    const switchTurns = () => { activePlayerIndex = activePlayerIndex === 0 ? 1 : 0; };
+
+    return { startGame, getActivePlayer, switchTurns };
 })();
