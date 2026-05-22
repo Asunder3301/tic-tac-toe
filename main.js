@@ -63,5 +63,9 @@ const gameController = (() => {
         })
     }
 
-    return { startGame, getActivePlayer, checkWin};
+    const checkTie = () => {
+        return board.getGameboard().every(cell => cell !== "");
+    }
+
+    return { startGame, getActivePlayer };
 })();
