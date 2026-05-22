@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: 100vh;
+    background-color: rgb(47, 79, 79);
+}
+
+#container {
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 10px;
+    max-height: 700px;
+    height: 100%;
+    max-width: 750px;
+    width: 100%;
+    min-width: 280px;
+    background-color: rgb(0, 0, 0);
+}
+
+.cell { background-color: rgb(255, 255, 255); min-width: 80px;}
+.cell:active { background-color: rgb(182, 182, 182); }
+
+#display{
+    border: 10px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+    height: 15%;
+    max-width: 750px;
+    width: 100%;
+    min-width: 280px;
+    background-color: rgb(255, 255, 255);
+}
