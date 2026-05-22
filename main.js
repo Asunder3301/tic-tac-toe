@@ -22,13 +22,7 @@ const board = (() => {
     return { getGameboard, makeMove, resetBoard };
 })();
 
-function createPlayer(name, marker) {
-    let score = 0;
-    const getScore = () => score;
-    const increaseScore = () => { score++ }
-
-    return {name, marker, getScore, increaseScore};
-}
+function createPlayer(name, marker) { return {name, marker}; }
 
 const gameController = (() => {
     let players = [];
@@ -75,7 +69,6 @@ const gameController = (() => {
 
         if (checkWin()) {
             gameOver = true;
-            getActivePlayer().increaseScore();
             return `${getActivePlayer().name} wins!`;
         }
 
