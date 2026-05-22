@@ -88,5 +88,7 @@ const gameController = (() => {
         return `${getActivePlayer().name}'s turn.`;
     }
 
-    return { startGame, getActivePlayer, playTurn };
+    const isGameOver = () => gameOver;
+
+    return { startGame, getActivePlayer, playTurn, isGameOver };
 })();
