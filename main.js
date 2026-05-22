@@ -46,5 +46,7 @@ const gameController = (() => {
         board.resetBoard();
     }
 
-    return { startGame };
+    const getActivePlayer = () => players[activePlayerIndex];
+
+    return { startGame, getActivePlayer };
 })();
