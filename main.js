@@ -1,5 +1,5 @@
 const board = (() => {
-    const gameboard = ["O", "X", "O", "O", "X", "X", "O", "O", "X"];
+    const gameboard = ["", "", "", "", "", "", "", "", ""];
 
     const getGameboard = () => gameboard;
 
@@ -85,14 +85,41 @@ const gameController = (() => {
 })();
 
 const handleDOM = (() => {
+    const handleCellClick = (event) => {
+        const index = event.target.dataset.index;
+
+        const turnResult = gameController.playTurn(index);
+        console.log(turnResult);
+
+        displayBoard();
+
+        if(turnResult !== "Invalid move!" && turnResult !== "Game Over!") { removeListner(index); }
+    }
+
     const displayBoard = () => {
         const cells = document.querySelectorAll(".cell");
         const currentBoard = board.getGameboard();
 
         cells.forEach((cell, index) => {
             cell.textContent = currentBoard[index];
+            cell.dataset.index = index;
         });
     }
 
-    return { displayBoard }
+    const addListners = () => {
+        const cells = document.querySelectorAll(".cell");
+        cells.forEach((cell, index) => {
+            cell.addEventListener("click", handleCellClick);
+        });
+    }
+
+    const removeListner = (index) => {
+        const cells = document.querySelectorAll(".cell");
+        const target = cells[index];
+        if(target) {
+            target.removeEventListener("click", handleCellClick);
+        }
+    }
+
+    return { displayBoard, addListners, removeListner }
 })();
