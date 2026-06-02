@@ -96,6 +96,20 @@ const handleDOM = (() => {
         if(turnResult !== "Invalid move!" && turnResult !== "Game Over!") { removeListner(index); }
     }
 
+    const getPlayerNames = () => {
+        const form = document.getElementById("form");
+
+        const formData = new FormData(form);
+        const playerNames = Object.fromEntries(formData);
+
+        return playerNames
+    }
+
+    const removeButton = () => {
+        const button = document.getElementById("start-btn");
+        button.style.display = "none"
+    }
+
     const displayBoard = () => {
         const cells = document.querySelectorAll(".cell");
         const currentBoard = board.getGameboard();
@@ -121,5 +135,15 @@ const handleDOM = (() => {
         }
     }
 
-    return { displayBoard, addListners, removeListner }
+    const startGame = () => {
+        const players = getPlayerNames();
+        gameController.startGame(players['player-1'], players['player-2']);
+        removeButton();
+        addListners();
+    }
+
+    return { startGame }
 })();
+
+const startBtn = document.getElementById("start-game");
+startBtn.addEventListener("click", handleDOM.startGame);
