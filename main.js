@@ -89,7 +89,7 @@ const handleDOM = (() => {
         const index = event.target.dataset.index;
 
         const turnResult = gameController.playTurn(index);
-        console.log(turnResult);
+        displayMessage(turnResult);
 
         displayBoard();
 
@@ -134,6 +134,13 @@ const handleDOM = (() => {
             target.removeEventListener("click", handleCellClick);
         }
     }
+
+    const displayMessage = (message) => {
+        const display = document.getElementById("display");
+        display.textContent = "";
+
+        display.textContent = message;
+    } 
 
     const startGame = () => {
         const players = getPlayerNames();
