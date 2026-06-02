@@ -80,8 +80,14 @@ const gameController = (() => {
         switchTurns();
         return `${getActivePlayer().name}'s turn.`;
     }
+
+    const restartGame = () => {
+        activePlayerIndex = 0;
+        gameOver = false;
+        board.resetBoard();
+    }
     
-    return { startGame, playTurn };
+    return { startGame, playTurn, restartGame };
 })();
 
 const handleDOM = (() => {
@@ -142,15 +148,26 @@ const handleDOM = (() => {
         display.textContent = message;
     } 
 
-    const startGame = () => {
+    const handleStart = () => {
         const players = getPlayerNames();
         gameController.startGame(players['player-1'], players['player-2']);
         removeButton();
         addListners();
     }
 
-    return { startGame }
+    const handleReset = () => {
+        const display = document.getElementById("display");
+        display.textContent = "Game reset!";
+        gameController.restartGame();
+        displayBoard();
+        addListners();
+    }
+
+    return {handleStart, handleReset }
 })();
 
 const startBtn = document.getElementById("start-game");
-startBtn.addEventListener("click", handleDOM.startGame);
+startBtn.addEventListener("click", handleDOM.handleStart);
+
+const resetBtn = document.getElementById("reset-btn");
+resetBtn.addEventListener("click", handleDOM.handleReset);
