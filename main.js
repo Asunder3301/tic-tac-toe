@@ -152,7 +152,11 @@ const handleDOM = (() => {
         const players = getPlayerNames();
         gameController.startGame(players['player-1'], players['player-2']);
         removeButton();
+        displayBoard();
         addListners();
+
+        const dialog = document.getElementById("form-container");
+        dialog.close();
     }
 
     const handleReset = () => {
@@ -166,8 +170,11 @@ const handleDOM = (() => {
     return {handleStart, handleReset }
 })();
 
-const startBtn = document.getElementById("start-game");
-startBtn.addEventListener("click", handleDOM.handleStart);
+const gaemForm = document.getElementById("form");
+gaemForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    handleDOM.handleStart();
+})
 
 const resetBtn = document.getElementById("reset-btn");
 resetBtn.addEventListener("click", handleDOM.handleReset);
