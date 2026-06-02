@@ -37,3 +37,55 @@ body {
     min-width: 280px;
     background-color: rgb(255, 255, 255);
 }
+
+#form-container {
+    border: none;
+    border-radius: 15px;
+    height: min-content;
+    max-height: 55vh;
+    width: 100%;
+    max-width: 25vw;
+    overflow-y: hidden;
+    background-color: rgb(44, 44, 44);
+}
+
+::backdrop { background-color: rgba(0, 0, 0, 0.45); }
+
+form {
+    display: grid;
+    gap: 1rem;
+    color: rgb(255, 255, 255);
+}
+
+.form-group { display: grid; }
+legend { font-size: clamp(0.7rem, 2.2vw, 1.2rem);  }
+
+label { 
+    font-size: clamp(0.7rem, 2vw, 1rem); 
+    text-box-trim: trim-both; 
+    text-box-edge: cap; 
+}
+
+input[type="text"] {
+    border: none;
+    border-radius: 7px;
+    padding: 0 0 0 5px;
+    min-height: 1.75em;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background: rgb(58, 58, 58);
+}
+
+button[type="submit"] {
+    border: none;
+    border-radius: 7px;
+    padding: 0;
+    height: 160%;
+    width: 30%;
+    min-width: 60px;
+    grid-column: 1 / -1;
+    justify-self: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(58, 58, 58);
+    font-size: clamp(0.5rem, 1.2vw, 1rem);
+}
