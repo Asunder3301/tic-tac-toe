@@ -24,18 +24,30 @@ body {
     background-color: rgb(0, 0, 0);
 }
 
-.cell { background-color: rgb(255, 255, 255); min-width: 80px;}
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 80px; 
+    background-color: rgb(255, 255, 255); 
+    font-weight: 300;
+    font-size: clamp(3rem, 10vw, 10rem);
+}
 .cell:active { background-color: rgb(182, 182, 182); }
 
 #display{
     border: 10px solid rgb(0, 0, 0);
     border-radius: 10px;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 15%;
     max-width: 750px;
     width: 100%;
     min-width: 280px;
     background-color: rgb(255, 255, 255);
+    font-size: clamp(2.5rem, 3vw, 5rem);
 }
 
 #form-container {
@@ -76,10 +88,26 @@ input[type="text"] {
     background: rgb(58, 58, 58);
 }
 
-button[type="submit"] {
+button {
     border: none;
     border-radius: 7px;
     padding: 0;
+    font-size: clamp(0.5rem, 1.2vw, 1rem);
+}
+
+#buttons {
+    display: flex;
+    gap: 20px;
+}
+
+#start-btn, #reset-btn {
+    height: 100%;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+button[type="submit"] {
     height: 160%;
     width: 30%;
     min-width: 60px;
@@ -87,5 +115,4 @@ button[type="submit"] {
     justify-self: center;
     color: rgb(255, 255, 255);
     background-color: rgb(58, 58, 58);
-    font-size: clamp(0.5rem, 1.2vw, 1rem);
 }
